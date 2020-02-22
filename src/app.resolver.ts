@@ -7,7 +7,8 @@ export class AppResolver {
 
   @Mutation()
   singleUpload(@Args('file') file) {
-    //	A regular (non-asyn) method returning an old-school style Promise
+
+    //	A regular (non-async) method returning an old-school style Promise
     return new Promise((resolve, reject) => {
       // read from this file
       const clown1 = './big_clown.webp';
@@ -22,7 +23,7 @@ export class AppResolver {
       //  create the write stream
       const writeStream = fs.createWriteStream(clown2);
 
-      //  Set up event handlers BEFORE doing any piping
+      //  Set up event handlers BEFORE piping
       //  @docs:  https://nodejs.org/docs/latest-v11.x/api/stream.html#stream_class_stream_readable
       //  @docs:  https://nodejs.org/docs/latest-v11.x/api/stream.html#stream_class_stream_writable
       writeStream.on('pipe', piper => {
@@ -35,14 +36,16 @@ export class AppResolver {
         console.log('writeStream finished');
         console.log('THIS is where we resolve our Promise');
         //	Our Promise resolves here
-        resolve('yay! Done our GraphQL query');
+        resolve('Nice!');
       });
-      //	Errors
+      //	Errors ( Promises reject here)
       writeStream.on('error', reject);
       readStream.on('error', reject);
 
       //  Now start piping
       readStream.pipe(writeStream);
     });
+
   }
+
 }
