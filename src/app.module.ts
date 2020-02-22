@@ -15,6 +15,11 @@ type Query {
 type Mutation {
   uploadPictures(fileInput: Upload!): String!
 }
+
+type Mutation {
+  foo() : String;
+}
+
 `;
 
 const customTypeDefs = `
@@ -24,15 +29,15 @@ type File {
     filename: String!
     mimetype: String!
     encoding: String!
-  }
+}
 
-  type Query {
-    uploads: [File]
-  }
+type Query {
+  uploads: [File]
+}
 
-  type Mutation {
-    singleUpload(file: Upload!): String!
-  }
+type Mutation {
+  singleUpload(file: Upload!): String!
+}
 `;
 
 @Module({
