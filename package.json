@@ -24,7 +24,7 @@
     "@nestjs/core": "^6.10.14",
     "@nestjs/graphql": "6.5.5",
     "@nestjs/platform-express": "6.11.8",
-    "apollo-server-express": "2.10.1",
+    "apollo-server-express": "2.14.2",
     "file-type": "^14.1.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
